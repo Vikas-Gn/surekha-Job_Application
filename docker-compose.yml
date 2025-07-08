@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: employee_portal
     ports:
-      - "5016:5432"
+      - "5603:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -21,7 +21,7 @@ services:
       context: ./Backend
     container_name: backend-application
     ports:
-      - "3048:3048"
+      - "3603:3603"
     depends_on:
       - postgres
     networks:
@@ -32,7 +32,7 @@ services:
       context: ./Employee-side
     container_name: Employee-side
     ports:
-      - "8061:80"
+      - "8606:80"
     depends_on:
       - backend
     networks:
@@ -43,7 +43,7 @@ services:
       context: ./HR-view
     container_name: HR-view
     ports:
-      - "8062:80"
+      - "8607:80"
     depends_on:
       - backend
     networks:
